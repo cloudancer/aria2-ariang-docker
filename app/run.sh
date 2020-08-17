@@ -58,12 +58,6 @@ then
     sed -i 's/'"${OLD_COOKIE}"'/'"${COOKIE}"'/g' /etc/nginx/conf.d/default.conf
     echo ${COOKIE} > oldCookie.txt
 else
-    if [ ${ENABLE_PASSWORD} == "true" ] 
-    then
-        cp -f /app/default.conf /etc/nginx/conf.d/default.conf
-    else
-        cp -f /app/nopassword.conf /etc/nginx/conf.d/default.conf
-    fi
 
     # 设置ARIA2密钥
     OLD_ARIA2_TOKEN=`grep -Eo "^rpc-secret=.*" /conf/aria2.conf | cut -d '=' -f 2`
@@ -136,4 +130,7 @@ then
 fi
 
 # 启动aria2
-sudo -u#${PUID} /usr/bin/aria2c --conf-path=/conf/aria2.conf
+if [ ! -f /conf/aria2.conf  ] 
+then
+    sudo -u#${PUID} /usr/bin/aria2c --conf-path=/conf/aria2.conf
+fi

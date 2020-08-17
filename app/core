@@ -13,7 +13,7 @@
 TASK_GID=$1
 FILE_NUM=$2
 FILE_PATH=$3
-ARIA2_CONF_DIR="/conf"
+ARIA2_CONF_DIR="$(dirname $0)/../conf"
 ARIA2_CONF="${ARIA2_CONF_DIR}/aria2.conf"
 ARIA2_SESSION="${ARIA2_CONF_DIR}/aria2.session"
 SCRIPT_CONF="${ARIA2_CONF_DIR}/script.conf"

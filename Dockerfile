@@ -4,12 +4,10 @@ ENV HTTP_PORT=80
 ENV EXTERNAL_PORT=80
 ENV PUID=1000
 ENV PGID=1000
-#ENV TRACKER_URL=https://cdn.jsdelivr.net/gh/ngosang/trackerslist/trackers_all.txt
 #ENV TRACKER_URL=https://trackerslist.com/best_aria2.txt
 ENV ENABLE_UPDATE_TRACKER=true
-ENV ENABLE_AUTO_RANDOM_ARIA=true
+ENV ENABLE_AUTO_RANDOM_ARIA=false
 ENV ENABLE_AUTO_CLEAR_ARIANG=true
-ENV ENABLE_PASSWORD=true
 ENV TZ=Asia/Shanghai
 
 VOLUME ["/data","/conf"]
@@ -23,7 +21,6 @@ ADD conf /conf
 RUN echo '*/30 * * * * /app/tracker.sh' > /etc/crontabs/root
 CMD /app/run.sh
 HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 CMD /app/healthcheck.sh
-#RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 RUN apk add --no-cache \
     aria2 \
