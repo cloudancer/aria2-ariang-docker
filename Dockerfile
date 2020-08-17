@@ -29,7 +29,10 @@ RUN apk add --no-cache \
     sudo \
     nginx \
     curl \
-    tzdata 
+    tzdata \
+    bash \
+    bash-doc \
+    bash-completion
 
 RUN ARIAGN_VERSION=`curl --silent "https://api.github.com/repos/mayswind/AriaNg/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'` \
     && mkdir -p /run/nginx \

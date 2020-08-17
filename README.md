@@ -5,7 +5,7 @@ docker run -d --name aria2ng -p 80:80 -p 6881:6881 -p 6888:6888 -v ~/data:/data 
 
 http://127.0.0.1
 
-then you can download now
+then you can download now, downloads will save in ~/data.
 
 #### this repository reference repos:
 
