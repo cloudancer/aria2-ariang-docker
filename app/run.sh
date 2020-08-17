@@ -121,6 +121,7 @@ else
 fi
 
 # 启动nginx
+cp -f /app/default.conf /etc/nginx/conf.d/default.conf
 nginx
 
 # 启动cron，自动更新tracker
