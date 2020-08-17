@@ -130,7 +130,4 @@ then
 fi
 
 # 启动aria2
-if [ ! -f /conf/aria2.conf  ] 
-then
-    sudo -u#${PUID} /usr/bin/aria2c --conf-path=/conf/aria2.conf
-fi
+sudo -u#${PUID} /usr/bin/aria2c --conf-path=/conf/aria2.conf
