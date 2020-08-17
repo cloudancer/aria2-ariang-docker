@@ -58,7 +58,8 @@ then
     sed -i 's/'"${OLD_COOKIE}"'/'"${COOKIE}"'/g' /etc/nginx/conf.d/default.conf
     echo ${COOKIE} > oldCookie.txt
 else
-
+    # nginx配置
+    cp -f /app/default.conf /etc/nginx/conf.d/default.conf
     # 设置ARIA2密钥
     OLD_ARIA2_TOKEN=`grep -Eo "^rpc-secret=.*" /conf/aria2.conf | cut -d '=' -f 2`
     if [[ -z "${OLD_ARIA2_TOKEN}" ]]
@@ -121,7 +122,6 @@ else
 fi
 
 # 启动nginx
-cp -f /app/default.conf /etc/nginx/conf.d/default.conf
 nginx
 
 # 启动cron，自动更新tracker
