@@ -18,7 +18,7 @@ WORKDIR /app
 ADD app /app
 RUN chmod +x /app/*.sh
 ADD conf /conf
-RUN echo '*/30 * * * * /app/tracker.sh' > /etc/crontabs/root
+RUN echo '9 */4 * * * /app/tracker.sh' > /etc/crontabs/root
 CMD /app/run.sh
 HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 CMD /app/healthcheck.sh
 
